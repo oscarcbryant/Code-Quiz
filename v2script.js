@@ -160,4 +160,3 @@ function renderPage() {
 // Before the first render set the score to 0 in localStorage
 window.localStorage.setItem("score", 0);
 renderPage(); // First rendering of the page
-
