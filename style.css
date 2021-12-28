@@ -1,0 +1,31 @@
+.quiz-header, .quiz-description, .begin {
+    display: flex;
+    justify-content: center;
+}
+
+#start-button {
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* .starter-box { */
+    /* height: 100px; */
+    /* margin: 0; */
+    /* padding: 0; */
+
+/* } */
+
+.starter-box {
+
+    border: blue 1px solid;
+    background-color:  blue;
+    color: white;
+    font-style: bold;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
