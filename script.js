@@ -2,7 +2,9 @@
 var currentPage = 0;
 var timerEl = document.querySelector('.timer');
 var secondsLeft = 30;
+var initials = "";
 var pageContent = [
+
     {
         header: `<h1 class="quiz-header">Coding Quiz Challenge</h1>`,
         content: `<p class="quiz-description">This week, we're tasked with generating a series of questions. We'll have 30 seconds
@@ -70,7 +72,7 @@ var pageContent = [
         }
     },
     {
-        header: `<h1 class="quiz-header">Which of these is not a coding language?</h1>`,
+        header: `<h1 class="quiz-header">Which of these is not a commonly used coding language?</h1>`,
         content: `<div>
     <input type="radio" id="CSS" name="q2" value="CSS"
                <label for="CSS">CSS</label>
@@ -80,7 +82,7 @@ var pageContent = [
                <label for="HTML">HTML</label>
   </div>
   <div>
-    <input type="radio" id="SOS" name="q1" value="SOS"
+    <input type="radio" id="SOS" name="q2" value="SOS"
                <label for="SOS">SOS</label>
   </div>
   <button id="submit-button" type="button">Submit</button>`,
@@ -106,6 +108,65 @@ var pageContent = [
             renderPage();
         }
     },
+    {
+        header: `<h1 class="quiz-header">What function prevents events from occuring over other events?</h1>`,
+        content: `<div>
+    <input type="radio" id="Propogation" name="q3" value="Propogation"
+               <label for="Propogation">Propogation</label>
+  </div>
+  <div>
+    <input type="radio" id="Default" name="q3" value="Default"
+               <label for="Default">Default</label>
+  </div>
+  <div>
+    <input type="radio" id="Keydown" name="q3" value="Keydown"
+               <label for="Keydown">Keydown</label>
+  </div>
+  <button id="submit-button" type="button">Submit</button>`,
+        correctAnswer: "Propogation",
+        buttonCallBack: function () {
+            // get selected radio button and its value. check value against correct answer
+            var answerValue = document.querySelector("input[name='q3']:checked").value;
+            
+
+            var score= window.localStorage.getItem("score");
+            
+            if (answerValue === this.correctAnswer)
+            {
+                window.localStorage.setItem("score", parseInt(score)+1);
+            }
+            else
+            {
+                // subtract time from the timer here.
+                secondsLeft -= 5;
+            }
+
+            currentPage++;
+            renderPage();
+        }
+    },
+    {
+        header: `<h1 class="quiz-header">All Done!</h1>`,
+        content: `<div>
+    <input type="textarea" id="initials" name="initials"
+               <label for="initials">Enter your initials here</label>
+  </div>
+  <button id="submit-button" type="button">Submit</button>`,
+  buttonCallBack: function () {
+    // get selected radio button and its value. check value against correct answer
+    initials = document.querySelector("input[name='initials']").value
+    
+
+    initials = window.localStorage.getItem("initials");
+    
+    
+    //currentPage++;
+    renderPage();
+    renderMessage ();
+}
+    }
+
+
    // {
        // header:
      //   content:,
@@ -152,6 +213,17 @@ function renderPage() {
 
     }
 }
+
+function renderMessage () {
+    score = localStorage.getItem("initials");
+
+    if (initials === "") {
+        document.querySelector("initials").textContent = "congratulations" + initials
+    }
+    }
+
+       console.log(initials);
+
 
 
  
